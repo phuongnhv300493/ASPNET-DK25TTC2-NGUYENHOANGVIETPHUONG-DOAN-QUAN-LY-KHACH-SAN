@@ -1,0 +1,49 @@
+﻿@model datphongkhachsan.Data.DataModel.ViewModel.PhongViewModel
+
+@{
+    ViewData["Title"] = "Tạo mới";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Tạo mới</h1>
+
+<h4>Phòng</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="phongs.Name" class="control-label"></label>
+                <input asp-for="phongs.Name" class="form-control" />
+                <span asp-validation-for="phongs.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phongs.ShortDescription" class="control-label"></label>
+                <input asp-for="phongs.ShortDescription" class="form-control" />
+                <span asp-validation-for="phongs.ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phongs.Price" class="control-label"></label>
+                <input asp-for="phongs.Price" class="form-control" />
+                <span asp-validation-for="phongs.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phongs.LoaiPhongId" class="control-label"></label>
+                <select asp-for="phongs.LoaiPhongId" class ="form-control" asp-items="ViewBag.LoaiPhongId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="phongs.ChuongTrinhId" class="control-label"></label>
+                <select asp-for="phongs.ChuongTrinhId" class ="form-control" asp-items="ViewBag.ChuongTrinhId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo mới" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Quay lại danh sách</a>
+</div>
+

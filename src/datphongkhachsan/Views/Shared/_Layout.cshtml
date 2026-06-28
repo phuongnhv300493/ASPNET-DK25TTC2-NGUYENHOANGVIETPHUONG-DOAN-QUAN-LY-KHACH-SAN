@@ -1,0 +1,86 @@
+﻿@using datphongkhachsan.Extensions
+@using datphongkhachsan.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewBag.BodyClass = "bg";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cici Hotel</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/hover.css" />
+    <link href="~/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope|Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Khách Sạn Cici</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1" style="font-family: 'Noto Sans', sans-serif;font-weight:bold">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark " style="font-size: 18px;font-weight:bold" asp-area="Customer" asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark " style="font-size: 18px;font-weight:bold" asp-area="Customer" asp-controller="PhongCustomer" asp-action="IndexRoom">PHÒNG</a>
+                        </li>
+                       
+                        @if (User.IsInRole(SD.AdminEndUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link hvr-float text-dark" style="font-size: 18px; font-weight: bold" asp-area="Admin" asp-controller="DatPhongs" asp-action="Index">Đặt & Nhận</a>
+                            </li>
+                        }
+                        @if (User.IsInRole(SD.SuperAdminEndUser))
+                        {
+                            <li class="nav-item">
+                                <div class="dropdown show">
+                                    <a class="nav-link   text-dark hvr-float dropdown-toggle fas fa-tools fa-2x " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Phongs" asp-action="Index">Phòng</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="LoaiPhongs" asp-action="Index">Loại Phòng</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="DichVus" asp-action="Index">Dịch Vụ</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="LoaiDichVus" asp-action="Index">Loại Dịch Vụ</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="ChuongTrinhs" asp-action="Index">Chương Trình</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="TrangThais" asp-action="Index">Trạng Thái</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Accounts" asp-action="Index">Tài Khoản</a>
+
+
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid-0">
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

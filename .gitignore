@@ -1,0 +1,15 @@
+# IDE
+.vs/
+*.user
+*.suo
+*.csproj.user
+
+# Build output
+**/bin/
+**/obj/
+
+# Logs
+*.log
+
+# Claude Code
+.claude/

@@ -1,0 +1,179 @@
+﻿@model datphongkhachsan.Areas.Admin.Models.DatPhongDetailsMD
+
+@{
+    ViewData["Title"] = "Chi tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* DatPhongdeTails *@
+<h1>Chi Tiết Phiếu đặt Phòng</h1>
+
+
+<div>
+    <h4>Thông tin người đặt phòng</h4>
+    <div>
+        @*<a asp-action="Edit" asp-route-id="@Model.GetDatPhong.Id">Edit</a> |*@
+        <a asp-action="Index">Quay lại</a>
+    </div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatPhong.TenNguoiDat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatPhong.TenNguoiDat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatPhong.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatPhong.Address)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatPhong.Cmnd)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatPhong.Cmnd)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatPhong.Sdt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatPhong.Sdt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatPhong.TienDatCoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatPhong.TienDatCoc)
+        </dd>
+        <dt class="col-sm-2">
+            Thời Gian Nhận
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatPhong.ThoiGianNhanPhongDuKien)
+        </dd>
+        <dt class="col-sm-2">
+            Thời Gian Trả
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatPhong.ThoiGianTraPhongDuKien)
+        </dd>
+    </dl>
+</div>
+
+
+
+@* Bang Phong *@
+<h2>Danh sách Phòng</h2>
+@*<p>
+        <a asp-action="IndexPhong">Them Phong</a>
+    </p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietDatPhongs[0].Phong.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietDatPhongs[0].TrangThai.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietDatPhongs[0].ThoiGian)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*bị lỗi ở đây do đâu,  @foreach (var item in Model.ChiTietDatPhongs) *@
+        @foreach (var item in Model.ChiTietDatPhongs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phong.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThoiGian)
+                </td>
+                <td>
+                    @if (DateTime.Today.Date <= item.ThoiGian && DateTime.Today.Date >= Model.DatPhong.ThoiGianNhanPhongDuKien)
+                    {
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form asp-area="Admin" asp-action="Details" asp-route-id="@item.PhongId"> 
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="DatPhong.Id" />
+                                    <div class="form-group">
+                                        @if (item.TrangThaiId == 1)
+                                        {
+                                            <input type="submit" value="Nhận Phòng" class="btn btn-outline-primary" />
+                                        }
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* Bang DichVu *@
+
+<h2>Danh sách Dịch Vụ</h2>
+@*<p><a asp-action="IndexDichVu">Them Dich Vu</a></p>*@
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietDichVuDatPhongs[0].DichVu.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietDichVuDatPhongs[0].DichVu.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietDichVuDatPhongs[0].SoLuong)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ChiTietDichVuDatPhongs[0].GetDichVu)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ChiTietDichVuDatPhongs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DichVu.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DichVu.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.GetDichVu.Id)*@
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

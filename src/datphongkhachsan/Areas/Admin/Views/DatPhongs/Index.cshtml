@@ -1,0 +1,131 @@
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model datphongkhachsan.Areas.Admin.Models.DatPhongIndexVM
+@{
+    ViewData["Title"] = "Danh sách đặt phòng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="row">
+        <div class="col-3">
+            <h1>Đặt phòng</h1>
+        </div>
+        <div class="col-4">
+ <a class="btn btn-outline-primary" asp-controller="DatPhongCart" asp-action="Index">Tạo mới</a>
+        </div>
+    </div>
+
+@* Trang Index, trang chu hiển thị các phiếu đặt phòng *@
+
+<form asp-controller="DatPhongs" asp-action="Index" method="get">
+    <p>
+        <div class="row">
+
+            <div class="col-4">
+                Thời Gian Nhận: <input asp-for="ThoiGianNhan" />
+            </div>
+            <div class="col-3">
+                CMND: <input type="text" asp-for="CMND" />
+            </div>
+            <div class="col-1">
+                <input type="submit" value="Tìm Kiếm" class="btn btn-primary" />
+            </div>
+        </div>
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.LisDatPhongs[0].TenNguoiDat)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LisDatPhongs[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LisDatPhongs[0].Cmnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LisDatPhongs[0].Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LisDatPhongs[0].TienDatCoc)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateNhanSortParm"]">   @Html.DisplayNameFor(model => model.LisDatPhongs[0].ThoiGianNhanPhongDuKien)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateTraSortParm"]">   @Html.DisplayNameFor(model => model.LisDatPhongs[0].ThoiGianTraPhongDuKien)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TongTienSortParm"]">   @Html.DisplayNameFor(model => model.LisDatPhongs[0].TongTien)</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.LisDatPhongs)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNguoiDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cmnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienDatCoc)
+            </td>
+            @if (item.ThoiGianNhanPhongDuKien < DateTime.Today.Date)
+            {
+                <td style="color: red">
+
+                    @Html.DisplayFor(modelItem => item.ThoiGianNhanPhongDuKien)
+                </td>
+            }
+            else
+            {
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.ThoiGianNhanPhongDuKien)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianTraPhongDuKien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+
+                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận thành công</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Đã nhận phòng
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+

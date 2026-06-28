@@ -1,0 +1,95 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <UserSecretsId>aspnet-datphongkhachsan-D1B23C21-AA4B-479C-AA61-91AC976B6F9E</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Data\**" />
+    <Compile Remove="Areas\Cus\**" />
+    <Content Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\Cus\**" />
+    <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\Cus\**" />
+    <None Remove="Areas\Admin\Data\**" />
+    <None Remove="Areas\Cus\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20191125164624_khaibaodatabase.cs" />
+    <Compile Remove="Data\Migrations\20191125164624_khaibaodatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191125183037_EditPhieuDatPhong.cs" />
+    <Compile Remove="Data\Migrations\20191125183037_EditPhieuDatPhong.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191125194116_ver2.cs" />
+    <Compile Remove="Data\Migrations\20191125194116_ver2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191125195203_ver3.cs" />
+    <Compile Remove="Data\Migrations\20191125195203_ver3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191125195738_khaibaodb.cs" />
+    <Compile Remove="Data\Migrations\20191125195738_khaibaodb.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191125204027_adddb.cs" />
+    <Compile Remove="Data\Migrations\20191125204027_adddb.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191125205039_adddb.cs" />
+    <Compile Remove="Data\Migrations\20191125205039_adddb.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191126050859_ver2.cs" />
+    <Compile Remove="Data\Migrations\20191126050859_ver2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191126053053_ver2.cs" />
+    <Compile Remove="Data\Migrations\20191126053053_ver2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191201041338_ver222.cs" />
+    <Compile Remove="Data\Migrations\20191201041338_ver222.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191203091810_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191203091810_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191203092346_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191203092346_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191203111003_ver2.cs" />
+    <Compile Remove="Data\Migrations\20191203111003_ver2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191203111645_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191203111645_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191203174126_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191203174126_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204044409_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204044409_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204060748_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204060748_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204061926_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204061926_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204064107_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204064107_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204064451_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204064451_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204081740_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204081740_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204224942_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204224942_ver1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204230819_ver1.cs" />
+    <Compile Remove="Data\Migrations\20191204230819_ver1.Designer.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="GemBox.Document" Version="31.0.0.1078" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+    <PackageReference Include="Syncfusion.DocIO.Net.Core" Version="25.1.37" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="25.1.37" />
+    <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core.Windows" Version="25.1.37" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+</Project>

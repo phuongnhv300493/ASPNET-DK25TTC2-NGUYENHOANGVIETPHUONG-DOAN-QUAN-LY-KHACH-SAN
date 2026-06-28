@@ -1,0 +1,81 @@
+﻿@using datphongkhachsan.Extensions
+@using Microsoft.AspNetCore.Http
+@model IEnumerable<datphongkhachsan.Data.DataModel.DichVu>
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh Sách Dịch vụ</h1>
+
+<p>
+    <a asp-controller="DatPhongCart" asp-action="Index">Quay lại</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiDv)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiDv.Name)
+                </td>
+                <td>
+                    @{
+                        bool isInBag = false;
+                        List<int> lstCart = HttpContextAccessor.HttpContext.Session.Get<List<int>>("ssDichVuCart");
+                        if (lstCart != null && lstCart.Contains(item.Id))
+                        {
+                            isInBag = true;
+
+                        }
+                    }
+
+                    @if (!isInBag)
+                    {
+                        <a class="btn btn-outline-primary" asp-action="AddDichVuToCart" asp-route-id="@item.Id">Chọn</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

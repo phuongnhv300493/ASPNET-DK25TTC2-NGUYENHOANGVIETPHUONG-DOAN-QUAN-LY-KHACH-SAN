@@ -1,0 +1,348 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<style>
+
+    h1 {
+        font-family: 'Annie Use Your Telescope', cursive;
+        font-size: 60px;
+        line-height: 33px;
+        color: white;
+    }
+
+
+.window {
+    justify-content: center;
+    width: 1250px;
+    position: relative;
+    height: 350px;
+}
+
+.split-screen-cta {
+    width: 50%;
+    position: absolute;
+    height: 100%;
+    transition: width 1s;
+    background-position: 50%, 50%;
+    background-size: cover;
+    }
+ .layout {
+    width: 100%;
+    height: 50rem;
+    background-image: url("../images/layout/bn1.jpg");
+    background-size:cover;
+}
+
+.left-half {
+    left: 0px;
+    width: 50%;
+    /*background-image: url("../images/img-overview.jpg");*/
+}
+
+.left-half:hover {
+    width: 60%;
+    transform: scale(1);
+}
+
+.right-half {
+    right: 0px;
+    width: 50%;
+}
+
+.right-half:hover {
+    width: 60%;
+    transform: scale(1);
+}
+.img.acc
+{
+    width:50%;
+}
+.slider {
+    display:block;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    position:absolute;
+    color:red;
+}
+
+slide {
+    font-size:70px;
+    text-align:center;
+    width:100%;
+    display:inline-block;
+    flex-shrink:0;
+}
+.card.MagicSlideshow.ListRoom
+{
+    width:100%;
+    height:100%;
+        display:inline-block;
+
+
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  /*padding: 16px;
+  margin-top: -50px;*/
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+<div class="container-fluid">
+    <div class="layout">
+        <br />
+        <br />
+        <h1>Khám phá..Mơ ước..Trải nghiệm</h1>
+    </div>
+    <br />
+    <div class="overview text-center">
+        <div class="row infor">
+            <div class="container text-center">
+                <h2>CHÀO MỪNG ĐẾN VỚI CICI HOTEL</h2>
+                <br />
+                <img class="img-overview" src="~/images/img-overview.jpg" alt="Chào mừng đến với Cici Hotel" style="max-width:100%" />
+                <p class="showMore">
+                    Cici Hotel nằm ở phía tây Hà Nội. Cici Hotel là một điểm đến tuyệt vời mang đến cho bạn những trải nghiệm
+                    thú vị nhất khi đến với chúng tôi. Đến với Cici Hotel, bạn sẽ được hòa mình vào thiên nhiên trong lành,
+                    tham gia các hoạt động thư giãn, nghỉ ngơi để xua tan những lo âu và bộn bề của cuộc sống.
+                    Cici Hotel với đầy đủ các tiện nghi và các bungalow hiện đại kết hợp phong cách truyền thống,
+                    hệ thống nhà hàng, hội trường,&nbsp;...
+                </p>
+                <div class="form-group">
+                    <button onclick="alert('Vui lòng liên hệ lễ tân qua số 028 3896 8641')" class="btn btn-outline-primary">ĐẶT PHÒNG NGAY</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row room">
+            <div class="container text-center">
+                <h2>LƯU TRÚ</h2>
+                <br />
+                <div class="window">
+                    <section class="split-screen-cta left-half">
+                        <a class="nav-link text-dark" asp-area="Customer" asp-controller="PhongCustomer" asp-action="IndexRoom">
+                            <img class="acc" src="~/images/RoomImages/1.jpg" />
+                        </a>
+                    </section>
+                    <section class="split-screen-cta right-half">
+                        <a class="nav-link text-dark" asp-area="Customer" asp-controller="PhongCustomer" asp-action="IndexRoom">
+                            <img class="acc" src="~/images/RoomImages/4.jpg" />
+                        </a>
+                    </section>
+                </div>
+                <p>
+                    Các phòng từ tiêu chuẩn đến cao cấp được bố trí hài hòa trong khuôn viên khách sạn.
+                    Tất cả các phòng đều có tiện nghi sang trọng, không gian rộng rãi và ban công lãng mạn với tầm nhìn ra toàn cảnh thành phố Hà Nội.
+                </p>
+                <br />
+                <div class="form-group">
+                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="PhongCustomer" asp-action="IndexRoom">
+                        <input type="submit" class="btn btn-outline-primary" value="Xem phòng" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="container text-center">
+            <h2>TẠI KHÁCH SẠN</h2>
+            <br />
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                        <img src="~/images/res-spa-shop/Dining.jpg" class="card-img-top" alt="Nhà hàng">
+                        <div class="card-body">
+                            <h5 class="card-title">NHÀ HÀNG</h5>
+                            <p class="card-text">
+                                Nhà hàng Lotus sẽ mang đến cho bạn trải nghiệm ẩm thực Việt Nam đáng nhớ,
+                                trong khi thưởng thức ẩm thực hòa quyện với vẻ đẹp của thiên nhiên và không khí trong lành của vùng nhiệt đới.
+                                Từ đơn giản đến tinh tế, những món ăn được trang trí bắt mắt này kích thích vị giác của bạn.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                        <img src="~/images/res-spa-shop/events.jpg" class="card-img-top" alt="Sự kiện">
+                        <div class="card-body">
+                            <h5 class="card-title">SỰ KIỆN</h5>
+                            <p class="card-text">
+                                Đám cưới là kết thúc đẹp cho một mối tình,
+                                mà bất kỳ cặp đôi nào cũng mong muốn. Tuy nhiên, khi đến tổ chức đám cưới,
+                                hầu hết cô dâu, chú rể và gia đình đều rất đau đầu với rất nhiều công việc chuẩn bị
+                                và đôi khi không biết bắt đầu từ đâu để tổ chức đám cưới hoàn hảo,
+                                đáng nhớ nhất.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                        <img src="~/images/res-spa-shop/SPA.jpg" class="card-img-top" alt="Spa">
+                        <div class="card-body">
+                            <h5 class="card-title">SPA & CHĂM SÓC SỨC KHỎE</h5>
+                            <p class="card-text">
+                                Với đội ngũ nhân viên chuyên nghiệp có nhiều năm kinh nghiệm trong lĩnh vực massage & spa,
+                                tận tâm tạo niềm tin lớn cho khách hàng. Khách sạn Lotus là nơi tận hưởng sự bình yên
+                                và thưởng thức liệu pháp mê hoặc từ đôi bàn tay thông qua liệu pháp massage 6 tay bay bổng trên cơ thể.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row imageRoom">
+        <div class="container text-center">
+            <h2>CICI HOTEL TẠI VIỆT NAM</h2>
+            <br />
+            <div class="row justify-content-center">
+                <div class="container-fluid-0">
+                    <div class="card ListRoom" style="width: 40rem;">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="~/images/RoomImages/DeluxeRoom.jpg" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="~/images/RoomImages/SuiteRoom.jpg" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="~/images/RoomImages/Superior.jpg" alt="Third slide">
+                                </div>
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Trước</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Sau</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>

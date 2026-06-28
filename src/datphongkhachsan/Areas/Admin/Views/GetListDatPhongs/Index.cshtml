@@ -1,0 +1,108 @@
+﻿@using datphongkhachsan.Extensions
+@using Microsoft.AspNetCore.Http
+@model datphongkhachsan.Areas.Admin.Models.GetListDatPhongIndexVM
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh sách phòng trống</h1>
+
+<p>
+    <a asp-controller="DatPhongCart" asp-action="Index">Quay lại</a>
+</p>
+<p><strong>Cách Tìm Phòng:</strong></p>
+<ol>
+    <li> Nhập ngày đến, ngày đi</li>
+    <li> Bấm Tìm kiếm phòng trống</li>
+</ol>
+<form asp-controller="GetListDatPhongs" asp-action="Index" method="get">
+    <p>
+        <div class="row">
+            <div class="col-4">
+                <strong>Ngày đến:</strong>   <input asp-for="NgayNhanPhongDuKien" />
+            </div>
+            <div class="col-4">
+                <strong>Ngày đi:</strong> <input asp-for="NgayTraPhongDuKien" />
+            </div>
+            <div class="col-1">
+                <input type="submit" value="Tìm Phòng Trống " class="btn btn-primary" />
+            </div>
+        </div>
+
+    </p>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LsPhongDatPhongs[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LsPhongDatPhongs[0].ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LsPhongDatPhongs[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LsPhongDatPhongs[0].ChuongTrinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LsPhongDatPhongs[0].LoaiPhong)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.isFillter)
+        {
+            @foreach (var item in Model.LsPhongDatPhongs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShortDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @if (item.ChuongTrinh == null)
+                        {
+                            <p>Không có</p>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.ChuongTrinh.TenChuongTrinh)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoaiPhong.Name)
+                    </td>
+                    <td>
+                        @{
+                            bool isInBag = false;
+                            List<int> lstCart = HttpContextAccessor.HttpContext.Session.Get<List<int>>("ssPhongCart");
+                            if (lstCart != null && lstCart.Contains(item.Id))
+                            {
+                                isInBag = true;
+
+                            }
+                        }
+
+                        @if (!isInBag)
+                        {
+                            <a class="btn btn-outline-primary" asp-action="AddPhongToCart" asp-route-id="@item.Id">Chọn phòng</a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

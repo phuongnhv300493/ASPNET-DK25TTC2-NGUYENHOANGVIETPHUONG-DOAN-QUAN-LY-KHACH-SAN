@@ -1,0 +1,91 @@
+﻿@model datphongkhachsan.Data.DataModel.ViewModel.PhongViewModel
+@using datphongkhachsan.Extensions
+@{
+    ViewData["Title"] = "Sửa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Sửa phòng</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="phongs.Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="phongs.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="phongs.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="phongs.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="phongs.ShortDescription"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="phongs.ShortDescription" class="form-control" />
+                </div>
+                <span asp-validation-for="phongs.ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="phongs.Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="phongs.Price" class="form-control" />
+                </div>
+                <span asp-validation-for="phongs.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="phongs.HinhUrl"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="phongs.LoaiPhongId"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="@Model.phongs.LoaiPhongId" asp-items="ViewBag.LoaiPhongId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="phongs.ChuongTrinhId"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="phongs.ChuongTrinhId" asp-items="ViewBag.ChuongTrinhId" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <div class="col-1">
+
+    </div>
+    <div class="col-3">
+        <img src="@Model.phongs.HinhUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+    </div>
+
+
+    <br />
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Cập nhật" />
+        <a asp-action="Index" class="btn btn-success">Quay lại danh sách</a>
+    </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

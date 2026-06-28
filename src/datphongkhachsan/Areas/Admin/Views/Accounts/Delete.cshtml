@@ -1,0 +1,45 @@
+﻿@model datphongkhachsan.Data.DataModel.AccountSys
+@{
+    ViewData["Title"] = "Xóa";
+}
+
+<br />
+<h2 class="text-info">Xóa/Vô hiệu hóa tài khoản quản trị</h2>
+
+<form method="post">
+    <div class="p-4 border rounded">
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name">Tên</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Email">Email</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Email" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="PhoneNumber">Số điện thoại</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PhoneNumber" readonly class="form-control" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" asp-route-id="@Model.Id" value="Xóa" />
+            <a asp-action="Index" class="btn btn-success">Quay lại danh sách</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,75 @@
+﻿@model datphongkhachsan.Data.DataModel.ViewModel.PhongViewModel
+@using datphongkhachsan.Extensions
+
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info"> Chi tiết phòng</h2>
+
+<div class="p-4 border rounded row">
+    <div class="col-8">
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="phongs.Name"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="phongs.Name" readonly class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="phongs.ShortDescription"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="phongs.ShortDescription" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="phongs.Price"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="phongs.Price" readonly class="form-control" />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="phongs.LoaiPhong"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="phongs.LoaiPhong.Name" readonly class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="phongs.ChuongTrinh"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="phongs.ChuongTrinh.TenChuongTrinh" readonly class="form-control" />
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-1">
+
+    </div>
+    <div class="col-3">
+        <img src="@Model.phongs.HinhUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+    </div>
+
+
+    <br />
+    <div class="form-group">
+        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.phongs.Id">Sửa</a>
+        <a asp-action="Index" class="btn btn-success">Quay lại danh sách</a>
+    </div>
+</div>

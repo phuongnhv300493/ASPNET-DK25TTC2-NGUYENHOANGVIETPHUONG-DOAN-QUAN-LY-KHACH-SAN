@@ -26,7 +26,7 @@
 
 - 🛏️ Khách hàng xem danh sách phòng, chi tiết phòng, đặt phòng
 - 👨‍💼 Nhân viên lễ tân tiếp nhận đặt phòng, check-in, check-out, quản lý dịch vụ đi kèm
-- 🔑 Quản trị viên quản lý toàn bộ hệ thống (phòng, loại phòng, dịch vụ, chương trình khuyến mãi, trạng thái, tài khoản)
+- 🔑 Quản trị viên quản lý toàn bộ hệ thống (phòng, loại phòng, dịch vụ, chương trình khuyến mãi, trạng thái, tài khoản).
 
 ### Phân quyền (3 Roles)
 | Role | Mô tả | Quyền truy cập |
